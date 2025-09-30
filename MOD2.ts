@@ -103,7 +103,7 @@ class Estoque{
     //Relatório do estoque
     relatorio(): void{
         console.log('\n--- ESTOQUE ---');
-        //Correr o array de produtos
+        //Percorre o array de produtos
         for (let p of this.produtos){
             console.log(`Código: ${p.codigo} |Produto: ${p.nome} | Quantidade: ${p.getQtd()} | Preço: ${p.preco}`);
             //Verificação de estoque baixo
