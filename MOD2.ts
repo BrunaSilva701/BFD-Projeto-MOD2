@@ -42,7 +42,7 @@ class Produto{
 }
 
 //Classe Movimentação
-class Movimentacao{
+abstract class Movimentacao{
     produtos: Produto;
     quantidade: number;
     //data: Date;
@@ -54,7 +54,7 @@ class Movimentacao{
     }
 
     //Método para que as classes Entrada e Saída possam redefinir esse método.
-    registrar(): void {} 
+    abstract registrar(): void {} 
 }
 
 //Classe Entrada (herda de Movimentacao)
