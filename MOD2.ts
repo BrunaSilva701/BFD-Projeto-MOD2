@@ -42,19 +42,19 @@ class Produto{
 }
 
 //Classe Movimentação
-abstract class Movimentacao{
+class Movimentacao{
     produtos: Produto;
     quantidade: number;
-    //data: Date;
+    data: Date;
 
     constructor(produtos: Produto, quantidade: number){
         this.produtos = produtos;
         this.quantidade = quantidade;
-        //this.data = new Date();
+        this.data = new Date();
     }
 
     //Método para que as classes Entrada e Saída possam redefinir esse método.
-    abstract registrar(): void; 
+    registrar(): void {} 
 }
 
 //Classe Entrada (herda de Movimentacao)
@@ -100,6 +100,22 @@ class Estoque{
         this.movimentacoes.push(s); //Movimenta o array e guarda o novo valor (Lista movimentacoes)
     }
 
+    //Histórico de movimentações
+    historioco():void{
+        console.log('\n---Histórico de movimentação---');
+        //Percorre o array
+        for(let m of this.movimentacoes){
+            let tipo: string;
+            if (m instanceof Entrada){
+                tipo = 'Entrada';
+            }else{
+                tipo = 'Saída';
+            } 
+            const data = m.data.toLocaleString();
+            console.log(`Tipo: ${tipo} | Data: ${data} | Produto: ${m.produtos.nome}| Quantidade: ${m.quantidade}`)
+        }
+    }
+
     //Relatório do estoque
     relatorio(): void{
         console.log('\n--- ESTOQUE ---');
@@ -124,6 +140,7 @@ do{
     console.log('2-Registrar entrada')
     console.log('3-Registar Saida')
     console.log('4-Gerar relatório de estoque')
+    console.log('5-Consultar histórico')
     console.log('0-Sair do sistema')
 
     opcao = Number(entrada('Escolha uma opção:'));
@@ -170,6 +187,12 @@ do{
             case 4:{
                 estoque.relatorio();
                 break
+            }
+
+            //Consultar histórico
+            case 5:{
+                estoque.historioco();
+                break;
             }
 
             //Encerra o sistema
