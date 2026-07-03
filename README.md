@@ -42,6 +42,7 @@
 | + cadastrarProduto(p: Produto): void |
 | + registrarEntrada(e: Entrada): void |
 | + registrarSaida(s: Saida): void     |
+| + historioco():void                  |
 | + relatorio(): void                  |
 +--------------------------------------+
          |                  |
